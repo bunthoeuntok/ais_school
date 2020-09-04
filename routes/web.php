@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Route;
 | Routes Scaffolding
 |--------------------------------------------------------------------------
 */
-Auth::routes();
+Auth::routes([
+	'register' => false,
+	'reset' => false
+]);
 
 Route::get('/', function () {
     return view('welcome');

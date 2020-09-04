@@ -69,7 +69,7 @@
         <ul class="navbar-nav">
             <li class="nav-item dropdown language-switch dropdown-auto-width">
                 <a href="javascript:void(0)" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="{{ asset('assets/images/lang/100/gb.png') }}" style="width: 28px;" class="img-flag mr-2" alt="">
+                    <img src="{{ asset('assets/images/lang/100/en.png') }}" class="img-flag mr-2" alt="">
                     English
                 </a>
 {{--                <div class="dropdown-menu">--}}

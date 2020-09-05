@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<!-- Page header -->
+		<!-- Page header -->
 	<div class="page-header page-header-light page-header-margin">
 		<div class="breadcrumb-line breadcrumb-line-light bg-white breadcrumb-line-component header-elements-md-inline">
 			<div class="d-flex">
@@ -25,18 +25,14 @@
 	</div>
 	<!-- /page header -->
 
-	<div class="content">
-		<div class="card">
-			<div class="card-header">{{ __('DashboardController') }}</div>
-			<div class="card-body">
-				@if (session('status'))
-					<div class="alert alert-success" role="alert">
-						{{ session('status') }}
-					</div>
-				@endif
 
-				{{ __('You are logged in!') }}
-			</div>
-		</div>
+    <div class="content">
+		<h4>Hello World</h4>
 	</div>
-@endsection
+@stop
+
+@push('script')
+	<script>
+		console.log('34343')
+	</script>
+@endpush

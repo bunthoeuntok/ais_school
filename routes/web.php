@@ -13,9 +13,12 @@ Auth::routes([
 	'reset' => false
 ]);
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group([
+	'prefix'		=> 'settings',
+    'as'			=> 'settings.',
+    'middleware'	=> ['auth'],
+    'namespace'		=> 'Setting'
+], function () {
+	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 });
 
-
-Route::get('/home', 'HomeController@index')->name('home');

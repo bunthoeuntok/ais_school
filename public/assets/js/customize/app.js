@@ -150,8 +150,7 @@ var _App = function () {
             _initDataTables();
         }
     }
-}
-();
+}();
 
 
 // Initialize module

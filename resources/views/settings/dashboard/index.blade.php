@@ -3,7 +3,7 @@
 @section('content')
 		<!-- Page header -->
 	<div class="page-header page-header-light page-header-margin">
-		<div class="breadcrumb-line breadcrumb-line-light bg-white breadcrumb-line-component header-elements-md-inline">
+		<div class="breadcrumb-line breadcrumb-line-light breadcrumb-line-component header-elements-md-inline">
 			<div class="d-flex">
 				<div class="breadcrumb">
 					<a href="#" class="breadcrumb-item"><i class="icon-cog2 mr-2"></i> Settings</a>

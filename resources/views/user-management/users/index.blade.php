@@ -1,53 +1,135 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Page header -->
-<div class="page-header page-header-light page-header-margin">
-    <div class="breadcrumb-line breadcrumb-line-light bg-white breadcrumb-line-component header-elements-md-inline">
-		<div class="d-flex">
-			<div class="breadcrumb">
-				<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-				<a href="components_breadcrumbs.html" class="breadcrumb-item">Components</a>
-				<span class="breadcrumb-item active">Breadcrumbs</span>
+	<!-- Page header -->
+	<div class="page-header page-header-light page-header-margin">
+		<div class="breadcrumb-line breadcrumb-line-light bg-white breadcrumb-line-component header-elements-md-inline">
+			<div class="d-flex">
+				<div class="breadcrumb">
+					<a href="index.html" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
+					<a href="components_breadcrumbs.html" class="breadcrumb-item">Components</a>
+					<span class="breadcrumb-item active">Breadcrumbs</span>
+				</div>
+
+				<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 			</div>
 
-			<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
-		</div>
-
-		<div class="header-elements d-none">
-			<div class="breadcrumb justify-content-center">
-				<a href="{{ route('user-management.users.create') }}" class="breadcrumb-elements-item">
-					<i class="icon-comment-discussion mr-2"></i>
-					Add User
-				</a>
+			<div class="header-elements d-none">
+				<div class="breadcrumb justify-content-center">
+					<a href="{{ route('user-management.users.create') }}" class="breadcrumb-elements-item">
+						<i class="icon-comment-discussion mr-2"></i>
+						Add User
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- /page header -->
-    <!-- Content area -->
-<div class="content">
-    <!-- Bordered table -->
-    <div class="card">
-        <div class="card-header bg-light header-elements-inline">
-            <h5 class="card-title">Bordered table</h5>
-            <div class="header-elements">
-                <div class="list-icons">
-                    <a class="list-icons-item" data-action="collapse"></a>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-			<div class="table-responsive">
-            	{!! $dataTable->table() !!}
+	<!-- /page header -->
+	<!-- Content area -->
+	<div class="content">
+		<!-- Bordered table -->
+		<div class="card">
+			<div class="card-header bg-light header-elements-inline">
+				<h5 class="card-title">Bordered table</h5>
+				<div class="header-elements">
+					<div class="list-icons">
+						<a class="list-icons-item" data-action="collapse"></a>
+					</div>
+				</div>
 			</div>
-        </div>
-    </div>
-    <!-- /bordered table -->
-</div>
+			<div class="card-body">
+				<div id="form-filter-wrapper">
+					<div id="form-filter">
+						<div class="row" id="filter-content">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-header bg-light header-elements-inline">
+				<h5 class="card-title">Bordered table</h5>
+				<div class="header-elements">
+					<div class="list-icons">
+						<a class="list-icons-item" data-action="collapse"></a>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					{!! $dataTable->table() !!}
+				</div>
+			</div>
+		</div>
+		<!-- /bordered table -->
+	</div>
 
 @endsection
 
 @push('script')
-    {!! $dataTable->scripts() !!}
+	{!! $dataTable->scripts() !!}
+	<script>
+        function searchColumn() {
+            return [
+                {index: 1, type: 'select', label: '{{ __('user.name') }}', placeholder: '{{ __('user.name') }}'},
+                {index: 2, type: 'date', label: 'Created Date', placeholder: 'Created Date'},
+                {index: 3, type: 'date', label: 'Updated Date', placeholder: 'Updated Date'},
+            ]
+        }
+
+        function generateFormComponents(column, fields) {
+            var index = $(column)[0][0];
+            var filterContent = document.getElementById('filter-content');
+            fields.forEach(function (field) {
+                if (index !== field.index)
+                    return;
+				var inputTypes = ['', 'text', 'number', 'date', 'time', 'hidden', 'radio', 'checkbox'];
+				var select = 'select';
+				var col = '';
+				if (inputTypes.includes(field.type)) {
+                    col = generateInput(field);
+                } else if (field.type === 'select') {
+					col = generateSelect(field);
+				}
+                $(col[0]).appendTo(filterContent);
+                $(col[1]).on('change', function () {
+                    column.search($(this).val(), false, false, true).draw();
+                });
+            });
+        }
+
+        function generateInput(field) {
+            var col = document.createElement('div');
+            var label = document.createElement('label');
+            var input = document.createElement('input');
+
+            col.className = 'col-md-4 col-lg-3';
+            label.innerText = field.label || '';
+            input.className = 'form-control input-sm';
+            input.type = field.type || 'text';
+            input.placeholder = field.placeholder || '';
+
+            col.append(label);
+            col.append(input);
+
+            return [col, input];
+        }
+
+        function generateSelect(field) {
+            var col = document.createElement('div');
+            var label = document.createElement('label');
+            var input = document.createElement('input');
+
+            col.className = 'col-md-4 col-lg-3';
+            label.innerText = field.label || '';
+            input.className = 'form-control input-sm';
+
+            col.append(label);
+            col.append(input);
+
+            return [col, input];
+        }
+	</script>
 @endpush

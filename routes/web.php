@@ -13,6 +13,8 @@ Auth::routes([
 	'reset' => false
 ]);
 
+Route::get('/', 'Setting\DashboardController@index');
+
 Route::group([
 	'prefix'		=> 'setting',
     'as'			=> 'setting.',

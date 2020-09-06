@@ -46,15 +46,16 @@ class UserDataTable extends DataTable
                     ->setTableId('user-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+                    ->orderBy(1, 'acs')
+					->parameters([
+						'initComplete' => "function () {
+							var fields = searchColumn();
+                            this.api().columns().every(function () {
+                            	var column = this;
+                            	generateFormComponents(column, fields);
+                            });
+                        }"
+					]);
     }
 
     /**
@@ -65,15 +66,15 @@ class UserDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('id'),
+            Column::make('name'),
+            Column::make('created_at'),
+            Column::make('updated_at')->visible(false),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)
                   ->width(60)
                   ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('name'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 

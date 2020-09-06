@@ -7,7 +7,7 @@ var _App = function () {
             colReorder: true,
             searching: false,
             lengthChange: false,
-            pageLength: 20,
+            pageLength: 50,
             pagingType: "full_numbers",
             dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
             language: {

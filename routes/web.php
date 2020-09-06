@@ -14,11 +14,20 @@ Auth::routes([
 ]);
 
 Route::group([
-	'prefix'		=> 'settings',
-    'as'			=> 'settings.',
+	'prefix'		=> 'setting',
+    'as'			=> 'setting.',
     'middleware'	=> ['auth'],
     'namespace'		=> 'Setting'
 ], function () {
 	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+});
+
+Route::group([
+	'prefix'		=> 'user-management',
+    'as'			=> 'user-management.',
+    'middleware'	=> ['auth'],
+    'namespace'		=> 'User'
+], function () {
+	Route::resource('users', 'UserController');
 });
 

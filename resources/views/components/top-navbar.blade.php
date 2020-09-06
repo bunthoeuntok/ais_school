@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="navbar-brand">
-        <a href="{{ route('settings.dashboard') }}" class="d-inline-block">
+        <a href="{{ route('setting.dashboard') }}" class="d-inline-block">
             <img src="{{ asset('assets/images/logo_light.png') }}" alt="">
         </a>
     </div>

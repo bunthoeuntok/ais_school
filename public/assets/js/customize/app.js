@@ -1,7 +1,7 @@
 var _App = function () {
 
     // DtataTable
-    var _initDataTables = function () {
+    var _initDataTables = function (test) {
         $.extend($.fn.dataTable.defaults, {
             autoWidth: false,
             colReorder: true,
@@ -22,7 +22,7 @@ var _App = function () {
                 }
             }
         });
-    }
+    };
     // Uniform
     var _componentUniform = function () {
         if (!$().uniform) {

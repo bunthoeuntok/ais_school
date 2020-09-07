@@ -26,6 +26,7 @@
 	<script src="{{ asset('assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
 	<script src="{{ asset('assets/js/plugins/tables/datatables/extensions/col_reorder.min.js') }}"></script>
 	<script src="{{ asset('assets/js/plugins/forms/selects/bootstrap_multiselect.js') }}"></script>
+	<script src="{{ asset('assets/js/plugins/forms/selects/select2.min.js') }}"></script>
 
 	<script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="{{ asset('assets/js/customize/app.js') }}"></script>

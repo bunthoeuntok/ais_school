@@ -16,7 +16,7 @@ class UserController extends Controller
 	 */
     public function index(UserDataTable $userDataTable)
     {
-        return $userDataTable->render('user-management.users.index');
+        return $userDataTable->with(['id' => '10'])->render('user-management.users.index');
     }
 
     /**

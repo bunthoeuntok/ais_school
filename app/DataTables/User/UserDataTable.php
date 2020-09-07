@@ -54,6 +54,7 @@ class UserDataTable extends DataTable
                             	var column = this;
                             	generateFormComponents(column, fields);
                             });
+                            $('.data-table-multiselect').multiselect();
                         }"
 					]);
     }

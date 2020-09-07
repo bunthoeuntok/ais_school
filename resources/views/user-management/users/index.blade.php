@@ -78,8 +78,11 @@
 					type: 'select',
 					label: '{{ __('user.name') }}',
 					placeholder: '{{ __('user.name') }}',
-					multiple: true,
 					options: [
+						{
+							value: '',
+							text: 'Option 1'
+						},
 						{
 							value: 1,
 							text: 'Option 1'
@@ -111,7 +114,6 @@
 				if (index !== field.index)
 					return;
 				var inputTypes = ['', 'text', 'number', 'date', 'time', 'hidden', 'radio', 'checkbox'];
-				var select = 'select';
 				var col = '';
 				if (inputTypes.includes(field.type) || !field.type) {
 					col = generateInput(field);
@@ -132,7 +134,7 @@
 
 			col.className = 'col-md-4 col-lg-3';
 			label.innerText = field.label || '';
-			input.className = 'form-control input-controll-sm';
+			input.className = 'form-control input-control-sm';
 			input.type = field.type || 'text';
 			input.placeholder = field.placeholder || '';
 
@@ -144,14 +146,15 @@
 
 		function generateSelect(field) {
 			var col = document.createElement('div');
+			var control = document.createElement('div');
 			var label = document.createElement('label');
 			var select = document.createElement('select');
 
 			col.className = 'col-md-4 col-lg-3';
+			control.className = 'form-group';
 			label.innerText = field.label || '';
-			select.className = 'form-control form-control-ms multiselect';
-			select.multiple = field.multiple ? true : false;
-
+			select.className = 'form-control data-table-multiselect';
+			select.multiple = !!field.multiple;
 			field.options.forEach(function(item) {
 				var option = document.createElement('option');
 				option.value = item.value;
@@ -159,8 +162,9 @@
 				select.appendChild(option);
 			});
 
-			col.appendChild(label);
-			col.appendChild(select);
+			control.appendChild(label);
+			control.appendChild(select);
+			col.appendChild(control);
 
 			return [col, select];
 		}

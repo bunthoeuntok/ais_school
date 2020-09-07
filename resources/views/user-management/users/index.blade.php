@@ -71,65 +71,98 @@
 @push('script')
 	{!! $dataTable->scripts() !!}
 	<script>
-        function searchColumn() {
-            return [
-                {index: 1, type: 'select', label: '{{ __('user.name') }}', placeholder: '{{ __('user.name') }}'},
-                {index: 2, type: 'date', label: 'Created Date', placeholder: 'Created Date'},
-                {index: 3, type: 'date', label: 'Updated Date', placeholder: 'Updated Date'},
-            ]
-        }
+		function searchColumn() {
+			return [
+				{
+					index: 1,
+					type: 'select',
+					label: '{{ __('user.name') }}',
+					placeholder: '{{ __('user.name') }}',
+					multiple: true,
+					options: [
+						{
+							value: 1,
+							text: 'Option 1'
+						},
+						{
+							value: 2,
+							text: 'Option 2'
+						},
+					]
+				 },
+				{
+					index: 2,
+					type: 'date',
+					label: 'Created Date',
+					placeholder: 'Created Date'},
+				{
+					index: 3,
+					type: 'date',
+					label: 'Updated Date',
+					placeholder: 'Updated Date'
+				},
+			]
+		}
 
-        function generateFormComponents(column, fields) {
-            var index = $(column)[0][0];
-            var filterContent = document.getElementById('filter-content');
-            fields.forEach(function (field) {
-                if (index !== field.index)
-                    return;
+		function generateFormComponents(column, fields) {
+			var index = $(column)[0][0];
+			var filterContent = document.getElementById('filter-content');
+			fields.forEach(function (field) {
+				if (index !== field.index)
+					return;
 				var inputTypes = ['', 'text', 'number', 'date', 'time', 'hidden', 'radio', 'checkbox'];
 				var select = 'select';
 				var col = '';
-				if (inputTypes.includes(field.type)) {
-                    col = generateInput(field);
-                } else if (field.type === 'select') {
+				if (inputTypes.includes(field.type) || !field.type) {
+					col = generateInput(field);
+				} else if (field.type === 'select') {
 					col = generateSelect(field);
 				}
-                $(col[0]).appendTo(filterContent);
-                $(col[1]).on('change', function () {
-                    column.search($(this).val(), false, false, true).draw();
-                });
-            });
-        }
+				$(col[0]).appendTo(filterContent);
+				$(col[1]).on('change', function () {
+					column.search($(this).val(), false, false, true).draw();
+				});
+			});
+		}
 
-        function generateInput(field) {
-            var col = document.createElement('div');
-            var label = document.createElement('label');
-            var input = document.createElement('input');
+		function generateInput(field) {
+			var col = document.createElement('div');
+			var label = document.createElement('label');
+			var input = document.createElement('input');
 
-            col.className = 'col-md-4 col-lg-3';
-            label.innerText = field.label || '';
-            input.className = 'form-control input-sm';
-            input.type = field.type || 'text';
-            input.placeholder = field.placeholder || '';
+			col.className = 'col-md-4 col-lg-3';
+			label.innerText = field.label || '';
+			input.className = 'form-control input-controll-sm';
+			input.type = field.type || 'text';
+			input.placeholder = field.placeholder || '';
 
-            col.append(label);
-            col.append(input);
+			col.appendChild(label);
+			col.appendChild(input);
 
-            return [col, input];
-        }
+			return [col, input];
+		}
 
-        function generateSelect(field) {
-            var col = document.createElement('div');
-            var label = document.createElement('label');
-            var input = document.createElement('input');
+		function generateSelect(field) {
+			var col = document.createElement('div');
+			var label = document.createElement('label');
+			var select = document.createElement('select');
 
-            col.className = 'col-md-4 col-lg-3';
-            label.innerText = field.label || '';
-            input.className = 'form-control input-sm';
+			col.className = 'col-md-4 col-lg-3';
+			label.innerText = field.label || '';
+			select.className = 'form-control form-control-ms multiselect';
+			select.multiple = field.multiple ? true : false;
 
-            col.append(label);
-            col.append(input);
+			field.options.forEach(function(item) {
+				var option = document.createElement('option');
+				option.value = item.value;
+				option.innerText = item.text;
+				select.appendChild(option);
+			});
 
-            return [col, input];
-        }
+			col.appendChild(label);
+			col.appendChild(select);
+
+			return [col, select];
+		}
 	</script>
 @endpush

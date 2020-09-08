@@ -72,14 +72,14 @@
                     <img src="{{ asset('assets/images/lang/100/en.png') }}" class="img-flag mr-2" alt="">
                     English
                 </a>
-{{--                <div class="dropdown-menu">--}}
-{{--                    @foreach (Gb::languages() as $language)--}}
-{{--                        <a href="{{ route( 'system-setting.locale', ['locale' => $language->code]) }}" class="dropdown-item {{ $language->code }}">--}}
-{{--                            <img src="{{ asset($language->image) }}" style="width: 28px;" class="img-flag">--}}
-{{--                            {{ $language->name }}--}}
-{{--                        </a>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
+                <div class="dropdown-menu">
+                    @foreach (GlobalHelper::languages() as $language)
+                        <a href="{{ route( 'setting.locale', ['locale' => $language->code]) }}" class="dropdown-item {{ $language->code }}">
+                            <img src="{{ asset($language->image) }}" style="width: 28px;" class="img-flag">
+                            {{ $language->name }}
+                        </a>
+                    @endforeach
+                </div>
             </li>
             <li class="nav-item dropdown dropdown-auto-width">
 {{--                @foreach(Gb::years() as $year)--}}

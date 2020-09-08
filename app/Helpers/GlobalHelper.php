@@ -3,18 +3,28 @@
 
 namespace App\Helpers;
 
+use App\Models\Setting\Language;
+use App\Models\User\Module;
 
 class GlobalHelper
 {
-	public static function Op($segment = 1, $url = '')
+	public static function activeModule($segment = 1, $url = '')
 	{
 		return request()->segment($segment) == $url ? 'nav-item-expanded nav-item-open' : '';
 	}
 
-	public static function Ac($segment = 1, $url = '')
+	public static function activePage($segment = 1, $url = '')
 	{
 		return request()->segment($segment) == $url ? 'active' : '';
 	}
 
+	public static function modules()
+	{
+		return Module::orderBy('order')->get();
+	}
 
+	public static function languages()
+	{
+		return Language::all();
+	}
 }

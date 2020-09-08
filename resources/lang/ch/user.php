@@ -1,4 +1,4 @@
 <?php
 	return [
-		'name' => 'Username'
+		'name' => '用户名'
 	];

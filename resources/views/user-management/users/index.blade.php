@@ -18,7 +18,8 @@
 				<div class="breadcrumb justify-content-center">
 					<a href="{{ route('user-management.users.create') }}" class="breadcrumb-elements-item">
 						<i class="icon-comment-discussion mr-2"></i>
-						Add User
+						{{ app()->getLocale() }}
+						{{ session('locale') }}
 					</a>
 				</div>
 			</div>
@@ -79,7 +80,7 @@
 				{
 					index: 0,
 					type: 'text',
-					label: 'ID',
+					label: '{{ __('user.name') }}',
 					id: 'text-box',
 				},
 				{
@@ -148,10 +149,12 @@
 
 		function generateInput(field) {
 			var col = document.createElement('div');
+			var control = document.createElement('div');
 			var label = document.createElement('label');
 			var input = document.createElement('input');
 
 			col.className = 'col-md-4 col-lg-3';
+			control.className = 'form-group';
 			label.innerText = field.label || '';
 			input.className = 'form-control input-control-sm';
 			input.type = field.type || 'text';
@@ -166,8 +169,9 @@
 
 			}
 
-			col.appendChild(label);
-			col.appendChild(input);
+			control.appendChild(label);
+			control.appendChild(input);
+			col.appendChild(control);
 
 			return [col, input];
 		}

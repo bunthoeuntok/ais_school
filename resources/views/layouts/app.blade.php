@@ -116,7 +116,7 @@
         }
 
         // Ukrainian
-        if (LanguageChange === "cn") {
+        if (LanguageChange === "ch") {
 
             // Set active class
             $('.dropdown-item' + chineseLangClass).addClass('active');

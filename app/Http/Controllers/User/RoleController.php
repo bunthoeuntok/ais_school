@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Models\System\Language;
+
+use App\Models\User\Role;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class LanguageController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class LanguageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\System\Language  $language
+     * @param  \App\Models\User\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Language $language)
+    public function show(Role $role)
     {
         //
     }
@@ -52,10 +54,10 @@ class LanguageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\System\Language  $language
+     * @param  \App\Models\User\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Language $language)
+    public function edit(Role $role)
     {
         //
     }
@@ -64,10 +66,10 @@ class LanguageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\System\Language  $language
+     * @param  \App\Models\User\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Language $language)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -75,10 +77,10 @@ class LanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\System\Language  $language
+     * @param  \App\Models\User\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Language $language)
+    public function destroy(Role $role)
     {
         //
     }

@@ -30,7 +30,8 @@ Route::group([
     'middleware'	=> ['auth'],
     'namespace'		=> 'Setting'
 ], function () {
-	Route::get('settings/locale/{locale}', 'SettingController@locale')->name('locale');
+	Route::get('locale/{locale}', 'SettingController@locale')->name('locale');
+    Route::resource('languages', 'LanguageController');
 });
 
 Route::group([
@@ -39,6 +40,9 @@ Route::group([
     'middleware'	=> ['auth'],
     'namespace'		=> 'User'
 ], function () {
+	Route::resource('roles', 'RoleController');
 	Route::resource('users', 'UserController');
+	Route::resource('modules', 'ModuleController');
+	Route::resource('pages', 'PageController');
 });
 

@@ -21,7 +21,10 @@ class UserDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'user.action');
+			->addIndexColumn()
+            ->addColumn('action', function () {
+            	return view('user-management.users.action');
+			});
     }
 
     /**
@@ -67,8 +70,9 @@ class UserDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id'),
+            Column::computed('DT_RowIndex', __('general.no'))->addClass('text-center')->width(60),
             Column::make('name'),
+            Column::make('email'),
             Column::make('created_at'),
             Column::make('updated_at')->visible(false),
             Column::computed('action')

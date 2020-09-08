@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="navbar-brand">
-        <a href="{{ route('setting.dashboard') }}" class="d-inline-block">
+        <a href="{{ route('system.dashboard') }}" class="d-inline-block">
             <img src="{{ asset('assets/images/logo_light.png') }}" alt="">
         </a>
     </div>
@@ -73,13 +73,12 @@
                     English
                 </a>
 {{--                <div class="dropdown-menu">--}}
-{{--                    @forelse (Gb::languages() as $language)--}}
+{{--                    @foreach (Gb::languages() as $language)--}}
 {{--                        <a href="{{ route( 'system-setting.locale', ['locale' => $language->code]) }}" class="dropdown-item {{ $language->code }}">--}}
 {{--                            <img src="{{ asset($language->image) }}" style="width: 28px;" class="img-flag">--}}
 {{--                            {{ $language->name }}--}}
 {{--                        </a>--}}
-{{--                    @empty--}}
-{{--                    @endforelse--}}
+{{--                    @endforeach--}}
 {{--                </div>--}}
             </li>
             <li class="nav-item dropdown dropdown-auto-width">

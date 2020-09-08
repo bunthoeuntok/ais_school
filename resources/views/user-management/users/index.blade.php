@@ -71,13 +71,23 @@
 @push('script')
 	{!! $dataTable->scripts() !!}
 	<script>
+		function f() {
+			$('#text-box').val(3343)
+        }
 		function searchColumn() {
 			return [
+				{
+					index: 0,
+					type: 'text',
+					label: 'ID',
+					id: 'text-box',
+				},
 				{
 					index: 1,
 					type: 'select',
 					label: '{{ __('user.name') }}',
 					placeholder: '{{ __('user.name') }}',
+					multiple: true,
 					options: [
 						{
 							value: '',
@@ -102,10 +112,19 @@
 					index: 3,
 					type: 'date',
 					label: 'Updated Date',
-					placeholder: 'Updated Date'
+					placeholder: 'Updated Date',
+					events: [
+						{
+						    eventName: 'change',
+							action: 'f'
+						}
+					]
+
 				},
 			]
 		}
+
+
 
 		function generateFormComponents(column, fields) {
 			var index = $(column)[0][0];
@@ -137,6 +156,15 @@
 			input.className = 'form-control input-control-sm';
 			input.type = field.type || 'text';
 			input.placeholder = field.placeholder || '';
+			input.id = field.id || '';
+			if (field.events) {
+				field.events.forEach(function (event) {
+					input.addEventListener(event.eventName, function () {
+						if (typeof window[event.action] === 'function') window[event.action]();
+					});
+				});
+
+			}
 
 			col.appendChild(label);
 			col.appendChild(input);
@@ -155,6 +183,7 @@
 			label.innerText = field.label || '';
 			select.className = 'form-control data-table-multiselect';
 			select.multiple = !!field.multiple;
+			select.id = field.id || 0;
 			field.options.forEach(function(item) {
 				var option = document.createElement('option');
 				option.value = item.value;

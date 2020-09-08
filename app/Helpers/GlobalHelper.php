@@ -15,4 +15,6 @@ class GlobalHelper
 	{
 		return request()->segment($segment) == $url ? 'active' : '';
 	}
+
+
 }

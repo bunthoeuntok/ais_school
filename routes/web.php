@@ -13,7 +13,16 @@ Auth::routes([
 	'reset' => false
 ]);
 
-Route::get('/', 'Setting\DashboardController@index');
+
+Route::group([
+	'prefix'		=> 'system',
+    'as'			=> 'system.',
+    'middleware'	=> ['auth'],
+    'namespace'		=> 'System'
+], function () {
+	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+});
+
 
 Route::group([
 	'prefix'		=> 'setting',
@@ -21,7 +30,7 @@ Route::group([
     'middleware'	=> ['auth'],
     'namespace'		=> 'Setting'
 ], function () {
-	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+	Route::get('settings/locale/{locale}', 'SettingController@locale')->name('locale');
 });
 
 Route::group([

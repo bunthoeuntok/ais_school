@@ -3,6 +3,8 @@
 namespace App\DataTables\User;
 
 use App\Models\User\User;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -21,7 +23,12 @@ class UserDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-			->addIndexColumn()
+			->addColumn('role', function (User $user) {
+				dd($user);
+				$user->roles()->each(function ($role) {
+					return $role->name;
+				});
+			})
             ->addColumn('action', function (User $user) {
             	return view('user-management.users.action', [
             		'user' => $user
@@ -29,15 +36,23 @@ class UserDataTable extends DataTable
 			});
     }
 
-    /**
-     * Get query source of dataTable.
-     *
-     * @param \App\User\User $model
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function query(User $model)
+	/**
+	 * Get query source of dataTable.
+	 *
+	 * @param User $user
+	 * @return Builder
+	 */
+    public function query(User $user)
     {
-        return $model->newQuery();
+    	$query = $user;
+    	collect($this->request->columns())->each(function ($column) use ($query) {
+    		if (isset($column['search'])) {
+    			$search = $column['search']['value'];
+				$query->whereIn($column['data'], explode(',', $search));
+			}
+		});
+
+    	return $query;
     }
 
     /**
@@ -72,9 +87,10 @@ class UserDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('DT_RowIndex', __('general.no'))->addClass('text-center')->width(60),
+            Column::make('id', 'id')->addClass('text-center')->width(60),
             Column::make('name'),
             Column::make('email'),
+            Column::make('role'),
             Column::make('created_at'),
             Column::make('updated_at')->visible(false),
             Column::computed('action')

@@ -72,35 +72,26 @@
 @push('script')
 	{!! $dataTable->scripts() !!}
 	<script>
-		function f() {
-			$('#text-box').val(3343)
-        }
 		function searchColumn() {
 			return [
 				{
 					index: 0,
-					type: 'text',
-					label: '{{ __('user.name') }}',
-					id: 'text-box',
-				},
-				{
-					index: 1,
 					type: 'select',
 					label: '{{ __('user.name') }}',
 					placeholder: '{{ __('user.name') }}',
 					multiple: true,
 					options: [
 						{
-							value: '',
-							text: 'Option 1'
-						},
-						{
 							value: 1,
-							text: 'Option 1'
+							text: '1'
 						},
 						{
 							value: 2,
-							text: 'Option 2'
+							text: '2'
+						},
+						{
+							value: 3,
+							text: '3'
 						},
 					]
 				 },
@@ -142,7 +133,7 @@
 				}
 				$(col[0]).appendTo(filterContent);
 				$(col[1]).on('change', function () {
-					column.search($(this).val(), false, false, true).draw();
+					column.search($(this).val(), true, false, true).draw();
 				});
 			});
 		}

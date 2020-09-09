@@ -22,12 +22,13 @@ class UserController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
+	 * @param Request $request
 	 * @param UserDataTable $userDataTable
 	 * @return Response
 	 */
-    public function index(UserDataTable $userDataTable)
+    public function index(Request $request, UserDataTable $userDataTable)
     {
-        return $userDataTable->render('user-management.users.index');
+        return $userDataTable->with('search', $request)->render('user-management.users.index');
     }
 
     /**

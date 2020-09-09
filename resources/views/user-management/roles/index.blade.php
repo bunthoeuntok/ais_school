@@ -16,9 +16,10 @@
 
 			<div class="header-elements d-none">
 				<div class="breadcrumb justify-content-center">
-					<a href="{{ route('setting.languages.create') }}" class="breadcrumb-elements-item">
+					<a href="{{ route('user-management.users.create') }}" class="breadcrumb-elements-item">
 						<i class="icon-comment-discussion mr-2"></i>
-						Add User
+						{{ app()->getLocale() }}
+						{{ session('locale') }}
 					</a>
 				</div>
 			</div>

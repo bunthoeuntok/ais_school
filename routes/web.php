@@ -13,7 +13,7 @@ Auth::routes([
 	'reset' => false
 ]);
 
-
+Route::get('/', 'System\DashboardController@index');
 Route::group([
 	'prefix'		=> 'system',
     'as'			=> 'system.',

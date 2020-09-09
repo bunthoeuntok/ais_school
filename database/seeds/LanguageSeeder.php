@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\System\Language;
+use App\Models\Setting\Language;
 
 class LanguageSeeder extends Seeder
 {

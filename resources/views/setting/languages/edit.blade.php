@@ -16,9 +16,8 @@
 
 			<div class="header-elements d-none">
 				<div class="breadcrumb justify-content-center">
-					<a href="{{ route('setting.languages.create') }}" class="breadcrumb-elements-item">
+					<a href="{{ route('user-management.users.create') }}" class="breadcrumb-elements-item">
 						<i class="icon-comment-discussion mr-2"></i>
-						Add User
 					</a>
 				</div>
 			</div>
@@ -27,7 +26,6 @@
 	<!-- /page header -->
 	<!-- Content area -->
 	<div class="content">
-		<!-- Bordered table -->
 		<div class="card">
 			<div class="card-header bg-light header-elements-inline">
 				<h5 class="card-title">Bordered table</h5>
@@ -38,36 +36,10 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<div id="form-filter-wrapper">
-					<div id="form-filter">
-						<div class="row" id="filter-content">
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="card">
-			<div class="card-header bg-light header-elements-inline">
-				<h5 class="card-title">Bordered table</h5>
-				<div class="header-elements">
-					<div class="list-icons">
-						<a class="list-icons-item" data-action="collapse"></a>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					{!! $dataTable->table() !!}
-				</div>
 			</div>
 		</div>
 		<!-- /bordered table -->
 	</div>
 
 @endsection
-
-@push('script')
-	{!! $dataTable->scripts() !!}
-@endpush

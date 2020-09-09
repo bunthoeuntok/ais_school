@@ -3,20 +3,22 @@
 namespace App\Http\Controllers\User;
 
 
+use App\DataTables\User\RoleDataTable;
 use App\Models\User\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class RoleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @param RoleDatatable $roleDatatable
+	 * @return void
+	 */
+    public function index(RoleDatatable $roleDatatable)
     {
-        //
+        return $roleDatatable->render('user-management.roles.index');
     }
 
     /**

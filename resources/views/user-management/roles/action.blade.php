@@ -2,7 +2,7 @@
     <div class="dropdown">
         <a href="#" class="list-icons-item dropdown-toggle caret-0" data-toggle="dropdown"><i class="icon-menu9"></i></a>
         <div class="dropdown-menu dropdown-menu-right">
-            <a href="{{ route('user-management.users.edit', $user->id) }}" class="dropdown-item"><i class="icon-file-stats"></i> Update</a>
+            <a href="{{ route('user-management.roles.edit', $role->id) }}" class="dropdown-item"><i class="icon-file-stats"></i> Update</a>
             <div class="dropdown-divider"></div>
             <form action="" method="post">
                 @method('delete')

@@ -23,10 +23,9 @@ class ModuleSeeder extends Seeder
             'name' => "School Setup",
             'slug' => 'school-setup',
         ]);
-
-        $school = Module::create([
-            'name' => "School Setup",
-            'slug' => 'school-setup',
+        $setting = Module::create([
+            'name' => "Setting",
+            'slug' => 'setting',
         ]);
 
         $user->roles()->attach(Role::where('slug', 'administrator')->first());
@@ -59,6 +58,13 @@ class ModuleSeeder extends Seeder
         $pagePage->can_access = 'pages.access';
         $pagePage->route_name = 'user-management.pages.index';
         $user->pages()->save($pagePage);
+
+        $languagePage = new Page();
+        $languagePage->name = 'Languages';
+        $languagePage->slug = 'languages';
+        $languagePage->can_access = 'languages.access';
+        $languagePage->route_name = 'setting.languages.index';
+        $setting->pages()->save($languagePage);
 
         // School Setup Module
 //        $branchPage = new Page();

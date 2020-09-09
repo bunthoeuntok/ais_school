@@ -5,11 +5,19 @@ namespace App\Http\Controllers\Setting;
 use App\DataTables\Setting\LanguageDataTable;
 use App\Models\Setting\Language;
 use App\Http\Controllers\Controller;
+use App\Repositories\Setting\LanguageRepository;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class LanguageController extends Controller
 {
+	protected $languageRepository;
+
+	public function __construct(LanguageRepository $languageRepository)
+	{
+		$this->languageRepository = $languageRepository;
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -28,7 +36,7 @@ class LanguageController extends Controller
      */
     public function create()
     {
-        //
+        return view('setting.languages.create');
     }
 
     /**
@@ -53,15 +61,17 @@ class LanguageController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\System\Language  $language
-     * @return Response
-     */
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param Language $language
+	 * @return Response
+	 */
     public function edit(Language $language)
     {
-        //
+		return view('setting.languages.edit', [
+			'language' => $language
+		]);
     }
 
     /**

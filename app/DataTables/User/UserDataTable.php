@@ -24,7 +24,6 @@ class UserDataTable extends DataTable
         return datatables()
             ->eloquent($query)
 			->addColumn('role', function (User $user) {
-				dd($user);
 				$user->roles()->each(function ($role) {
 					return $role->name;
 				});
@@ -44,7 +43,7 @@ class UserDataTable extends DataTable
 	 */
     public function query(User $user)
     {
-    	$query = $user;
+    	$query = $user->with('roles');
     	collect($this->request->columns())->each(function ($column) use ($query) {
     		if (isset($column['search'])) {
     			$search = $column['search']['value'];

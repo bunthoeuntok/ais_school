@@ -133,7 +133,7 @@
 				}
 				$(col[0]).appendTo(filterContent);
 				$(col[1]).on('change', function () {
-					column.search($(this).val(), true, false, true).draw();
+					column.search($(this).val(), false, false, true).draw();
 				});
 			});
 		}

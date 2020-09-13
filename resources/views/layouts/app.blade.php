@@ -29,6 +29,7 @@
 	<script src="{{ asset('assets/js/plugins/forms/selects/select2.min.js') }}"></script>
 
 	<script src="{{ asset('assets/js/app.js') }}"></script>
+	<script src="{{ asset('assets/js/customize/functions.js') }}"></script>
     <script src="{{ asset('assets/js/customize/app.js') }}"></script>
 </head>
 <body>

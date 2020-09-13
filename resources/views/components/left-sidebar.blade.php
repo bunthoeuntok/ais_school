@@ -33,7 +33,7 @@
 					</a>
 				</li>
 				@foreach(\App\Helpers\GlobalHelper::modules() as $module)
-					<li class="nav-item nav-item-submenu {{ \App\Helpers\GlobalHelper::activePage(1, $module->slug) }}">
+					<li class="nav-item nav-item-submenu {{ \App\Helpers\GlobalHelper::activeModule(1, $module->slug) }}">
 						<a href="#" class="nav-link"><i class="{{ $module->icon }}"></i>
 							<span>{{ __($module->slug) }}</span></a>
 						<ul class="nav nav-group-sub" data-submenu-title="Layouts">

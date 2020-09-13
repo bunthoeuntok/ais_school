@@ -24,10 +24,11 @@ class UserDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-			->addColumn('role', function (User $user) {
-				$user->roles->map(function (Role $role) {
+			->addIndexColumn()
+			->addColumn('roles', function (User $user) {
+				return $user->roles->map(function (Role $role) {
 					return $role->name;
-				})->implode('<br>');
+				})->implode('<br />');
 			})
             ->addColumn('action', function (User $user) {
             	return view('user-management.users.action', [
@@ -44,7 +45,7 @@ class UserDataTable extends DataTable
 	 */
     public function query(User $user)
     {
-    	return $user->newQuery();
+    	return $user->with(['roles', 'roles.users']);
     }
 
     /**
@@ -79,17 +80,20 @@ class UserDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('id', 'id')->addClass('text-center')->width(60),
+            Column::computed('DT_RowIndex', __('general.no'))
+				->addClass('text-center')
+				->width(60),
             Column::make('name'),
             Column::make('email'),
-            Column::make('role'),
+            Column::make('roles'),
             Column::make('created_at'),
-            Column::make('updated_at')->visible(false),
+            Column::make('updated_at')
+				->visible(false),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+				->exportable(false)
+				->printable(false)
+				->width(60)
+				->addClass('text-center'),
         ];
     }
 

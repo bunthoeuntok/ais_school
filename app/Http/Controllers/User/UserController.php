@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\DataTables\User\UserDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\User\Role;
 use App\Models\User\User;
 use App\Repositories\User\UserRepository;
 use Illuminate\Http\Request;
@@ -28,7 +29,11 @@ class UserController extends Controller
 	 */
     public function index(Request $request, UserDataTable $userDataTable)
     {
-        return $userDataTable->with('search', $request)->render('user-management.users.index');
+    	$roles = Role::all();
+
+        return $userDataTable->render('user-management.users.index', [
+        	'roles' => $roles
+		]);
     }
 
     /**

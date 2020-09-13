@@ -2,6 +2,7 @@
 
 namespace App\DataTables\User;
 
+use App\Models\User\Role;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
@@ -24,9 +25,9 @@ class UserDataTable extends DataTable
         return datatables()
             ->eloquent($query)
 			->addColumn('role', function (User $user) {
-				$user->roles()->each(function ($role) {
+				$user->roles->map(function (Role $role) {
 					return $role->name;
-				});
+				})->implode('<br>');
 			})
             ->addColumn('action', function (User $user) {
             	return view('user-management.users.action', [
@@ -43,15 +44,7 @@ class UserDataTable extends DataTable
 	 */
     public function query(User $user)
     {
-    	$query = $user->with('roles');
-    	collect($this->request->columns())->each(function ($column) use ($query) {
-    		if (isset($column['search'])) {
-    			$search = $column['search']['value'];
-				$query->whereIn($column['data'], explode(',', $search));
-			}
-		});
-
-    	return $query;
+    	return $user->newQuery();
     }
 
     /**

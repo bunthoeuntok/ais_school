@@ -78,7 +78,6 @@
 					index: 0,
 					type: 'select',
 					label: '{{ __('user.name') }}',
-					placeholder: '{{ __('user.name') }}',
 					multiple: true,
 					options: [
 						{
@@ -96,23 +95,11 @@
 					]
 				 },
 				{
-					index: 2,
-					type: 'date',
-					label: 'Created Date',
-					placeholder: 'Created Date'},
-				{
-					index: 3,
-					type: 'date',
-					label: 'Updated Date',
-					placeholder: 'Updated Date',
-					events: [
-						{
-						    eventName: 'change',
-							action: 'f'
-						}
-					]
-
-				},
+					index: 1,
+					type: 'text',
+					label: 'Name',
+					placeholder: 'Username'
+				}
 			]
 		}
 
@@ -133,7 +120,14 @@
 				}
 				$(col[0]).appendTo(filterContent);
 				$(col[1]).on('change', function () {
-					column.search($(this).val(), false, false, true).draw();
+				    var value = $(this).val();
+				    var regex = [];
+				    if (Array.isArray(value)) {
+						 regex = value.map(function (value) {
+							return $.fn.dataTable.util.escapeRegex(value);
+                        }).join('|');
+                    }
+					column.search(regex.length > 0 ? '^(' + regex + ')$' : value, true, false).draw();
 				});
 			});
 		}

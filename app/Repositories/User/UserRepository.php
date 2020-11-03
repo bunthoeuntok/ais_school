@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class UserRepository
 {
+	public function all()
+	{
+		return User::all();
+	}
+	
 	public function create(Request $request)
 	{
 

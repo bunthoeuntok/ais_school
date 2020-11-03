@@ -27,13 +27,11 @@ class UserController extends Controller
 	 * @param UserDataTable $userDataTable
 	 * @return Response
 	 */
-    public function index(Request $request, UserDataTable $userDataTable)
+    public function index()
     {
-    	$roles = Role::all();
-
-        return $userDataTable->render('user-management.users.index', [
-        	'roles' => $roles
-		]);
+    	return view('user-management.users.index', [
+            'users' => User::paginate()
+        ]);
     }
 
     /**

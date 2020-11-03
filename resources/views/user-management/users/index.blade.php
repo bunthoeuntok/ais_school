@@ -18,8 +18,7 @@
 				<div class="breadcrumb justify-content-center">
 					<a href="{{ route('user-management.users.create') }}" class="breadcrumb-elements-item">
 						<i class="icon-comment-discussion mr-2"></i>
-						{{ app()->getLocale() }}
-						{{ session('locale') }}
+						<span>add</span>
 					</a>
 				</div>
 			</div>
@@ -60,7 +59,34 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					{!! $dataTable->table() !!}
+					<table class="table">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Username</th>
+								<th>Role</th>
+								<th>Email</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($users as $user)
+								<tr>
+									<td style="width: 50px" class="text-center">{{ $user->id }}</td>
+									<td>{{ $user->name }}</td>
+									<td>
+										@foreach ($user->roles as $role)
+											<span>{{ $role->name }}</span>
+										@endforeach
+									</td>
+									<td>{{ $user->email }}</td>
+									<td style="width: 100px" class="text-center">
+										@include('user-management.users.action', $user)
+									</td>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -70,30 +96,5 @@
 @endsection
 
 @push('script')
-	{!! $dataTable->scripts() !!}
-	<script>
-		function searchColumn() {
-			return [
-				{
-					index: 1,
-					type: 'text',
-					label: 'Name',
-					placeholder: 'Username'
-				},
-				{
-					index: 2,
-					type: 'text',
-					label: '{{ __('user.email') }}',
-				},
-				{
-					index: 3,
-					type: 'text',
-					label: '{{ __('user.role') }}',
-				},
-			]
-		}
 
-
-
-	</script>
 @endpush

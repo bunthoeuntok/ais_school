@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\User\Role;
-use App\Models\User\User;
+use App\Models\UserManagement\Role;
+use App\Models\UserManagement\User;
 
 class RoleSeeder extends Seeder
 {

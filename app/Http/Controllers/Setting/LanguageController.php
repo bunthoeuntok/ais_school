@@ -21,12 +21,13 @@ class LanguageController extends Controller
 	/**
 	 * Display a listing of the resource.
 	 *
-	 * @param LanguageDataTable $languageDataTable
 	 * @return Response
 	 */
-    public function index(LanguageDataTable $languageDataTable)
+    public function index()
     {
-		return $languageDataTable->render('setting.languages.index');
+		return view('setting.languages.index', [
+			'languages' => $this->languageRepository->paginate()
+		]);
     }
 
     /**

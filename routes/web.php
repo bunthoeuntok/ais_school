@@ -38,7 +38,7 @@ Route::group([
 	'prefix'		=> 'user-management',
     'as'			=> 'user-management.',
     'middleware'	=> ['auth'],
-    'namespace'		=> 'User'
+    'namespace'		=> 'UserManagement'
 ], function () {
 	Route::resource('roles', 'RoleController');
 	Route::resource('users', 'UserController');

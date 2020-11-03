@@ -59,7 +59,26 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
-					{!! $dataTable->table() !!}
+					<table class="table">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Name</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach($languages as $language)
+								<tr>
+									<td>{{ $language->id }}</td>
+									<td>{{ $language->name }}</td>
+									<th>
+										@include('setting.languages.action', $language)
+									</th>
+								</tr>
+							@endforeach
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -69,5 +88,4 @@
 @endsection
 
 @push('script')
-	{!! $dataTable->scripts() !!}
 @endpush

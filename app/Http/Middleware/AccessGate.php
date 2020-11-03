@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User\Module;
-use App\Models\User\Permission;
-use App\Models\User\Role;
-use App\Models\User\User;
+use App\Models\UserManagement\Module;
+use App\Models\UserManagement\Permission;
+use App\Models\UserManagement\Role;
+use App\Models\UserManagement\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

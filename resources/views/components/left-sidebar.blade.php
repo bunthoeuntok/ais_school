@@ -48,7 +48,6 @@
 									</li>
 								@endcan
 							@endforeach
-
 						</ul>
 					</li>
 				@endforeach

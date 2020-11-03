@@ -62,19 +62,19 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Role Name</th>
+								<th>Module Name</th>
 								<th>Description</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($roles as $role)
+							@foreach ($modules as $module)
 								<tr>
-									<td>{{ $role->id }}</td>
-									<td>{{ $role->name }}</td>
-									<td>{{ $role->desction }}</td>
+									<td>{{ $module->id }}</td>
+									<td>{{ $module->name }}</td>
+									<td>{{ $module->description }}</td>
 									<td>
-										@include('user-management.roles.action', $role)
+										@include('user-management.modules.action', $module)
 									</td>
 								</tr>
 							@endforeach
@@ -89,5 +89,5 @@
 @endsection
 
 @push('script')
-	
+
 @endpush

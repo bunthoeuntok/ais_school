@@ -4,7 +4,7 @@
 namespace App\Helpers;
 
 use App\Models\Setting\Language;
-use App\Models\User\Module;
+use App\Models\UserManagement\Module;
 
 class GlobalHelper
 {

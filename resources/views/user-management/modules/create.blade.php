@@ -18,6 +18,8 @@
 				<div class="breadcrumb justify-content-center">
 					<a href="{{ route('user-management.users.create') }}" class="breadcrumb-elements-item">
 						<i class="icon-comment-discussion mr-2"></i>
+						{{ app()->getLocale() }}
+						{{ session('locale') }}
 					</a>
 				</div>
 			</div>
@@ -26,7 +28,6 @@
 	<!-- /page header -->
 	<!-- Content area -->
 	<div class="content">
-		<!-- Bordered table -->
 		<div class="card">
 			<div class="card-header bg-light header-elements-inline">
 				<h5 class="card-title">Bordered table</h5>
@@ -37,57 +38,10 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<div id="form-filter-wrapper">
-					<div id="form-filter">
-						<div class="row" id="filter-content">
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="card">
-			<div class="card-header bg-light header-elements-inline">
-				<h5 class="card-title">Bordered table</h5>
-				<div class="header-elements">
-					<div class="list-icons">
-						<a class="list-icons-item" data-action="collapse"></a>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<div class="table-responsive">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>No</th>
-								<th>Role Name</th>
-								<th>Description</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach ($roles as $role)
-								<tr>
-									<td>{{ $role->id }}</td>
-									<td>{{ $role->name }}</td>
-									<td>{{ $role->desction }}</td>
-									<td>
-										@include('user-management.roles.action', $role)
-									</td>
-								</tr>
-							@endforeach
-						</tbody>
-					</table>
-				</div>
 			</div>
 		</div>
 		<!-- /bordered table -->
 	</div>
 
 @endsection
-
-@push('script')
-	
-@endpush

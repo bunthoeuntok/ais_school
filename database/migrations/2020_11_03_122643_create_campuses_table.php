@@ -15,7 +15,7 @@ class CreateCampusesTable extends Migration
     {
         Schema::create('campuses', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('school_id');
+            $table->unsignedBigInteger('branch_id');
             $table->text('name');
             $table->text('name_kh');
             $table->string('latitude')->nullable();
@@ -31,7 +31,7 @@ class CreateCampusesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
         });
     }
 

@@ -67,26 +67,26 @@ class ModuleSeeder extends Seeder
         $setting->pages()->save($languagePage);
 
         // School Setup Module
-//        $branchPage = new Page();
-//        $branchPage->name = 'School Branches';
-//        $branchPage->slug = 'schools';
-//        $branchPage->can_access = 'schools.access';
-//        $branchPage->route_name = 'school-setup.schools.index';
-//        $school->pages()->save($branchPage);
-//
-//        $campusPage = new Page();
-//        $campusPage->name = 'School Campuses';
-//        $campusPage->slug = 'campuses';
-//        $campusPage->can_access = 'campuses.access';
-//        $campusPage->route_name = 'school-setup.campuses.index';
-//        $school->pages()->save($campusPage);
-//
-//        $yearPage = new Page();
-//        $yearPage->name = 'Academic Years';
-//        $yearPage->slug = 'years';
-//        $yearPage->can_access = 'years.access';
-//        $yearPage->route_name = 'school-setup.years.index';
-//        $school->pages()->save($yearPage);
+       $branchPage = new Page();
+       $branchPage->name = 'Branches';
+       $branchPage->slug = 'branches';
+       $branchPage->can_access = 'branches.access';
+       $branchPage->route_name = 'school-setup.branches.index';
+       $school->pages()->save($branchPage);
+
+       $campusPage = new Page();
+       $campusPage->name = 'Campuses';
+       $campusPage->slug = 'campuses';
+       $campusPage->can_access = 'campuses.access';
+       $campusPage->route_name = 'school-setup.campuses.index';
+       $school->pages()->save($campusPage);
+
+       $yearPage = new Page();
+       $yearPage->name = 'Academic Years';
+       $yearPage->slug = 'years';
+       $yearPage->can_access = 'years.access';
+       $yearPage->route_name = 'school-setup.years.index';
+       $school->pages()->save($yearPage);
 //
 //        $programPage = new Page();
 //        $programPage->name = 'School Programs';

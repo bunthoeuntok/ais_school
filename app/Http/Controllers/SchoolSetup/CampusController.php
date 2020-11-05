@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SchoolSetup;
 
-use App\SchoolSetup\Branch;
+use App\Http\Controllers\Controller;
+use App\SchoolSetup\Campus;
 use Illuminate\Http\Request;
 
-class BranchController extends Controller
+class CampusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class BranchController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SchoolSetup\Branch  $branch
+     * @param  \App\SchoolSetup\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function show(Branch $branch)
+    public function show(Campus $campus)
     {
         //
     }
@@ -52,10 +53,10 @@ class BranchController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SchoolSetup\Branch  $branch
+     * @param  \App\SchoolSetup\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function edit(Branch $branch)
+    public function edit(Campus $campus)
     {
         //
     }
@@ -64,10 +65,10 @@ class BranchController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SchoolSetup\Branch  $branch
+     * @param  \App\SchoolSetup\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Branch $branch)
+    public function update(Request $request, Campus $campus)
     {
         //
     }
@@ -75,10 +76,10 @@ class BranchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SchoolSetup\Branch  $branch
+     * @param  \App\SchoolSetup\Campus  $campus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Branch $branch)
+    public function destroy(Campus $campus)
     {
         //
     }

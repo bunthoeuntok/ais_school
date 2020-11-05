@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SchoolSetup;
 
-use App\SchoolSetup\Campus;
+use App\Http\Controllers\Controller;
+use App\SchoolSetup\Year;
 use Illuminate\Http\Request;
 
-class CampusController extends Controller
+class YearController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class CampusController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SchoolSetup\Campus  $campus
+     * @param  \App\SchoolSetup\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function show(Campus $campus)
+    public function show(Year $year)
     {
         //
     }
@@ -52,10 +53,10 @@ class CampusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SchoolSetup\Campus  $campus
+     * @param  \App\SchoolSetup\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function edit(Campus $campus)
+    public function edit(Year $year)
     {
         //
     }
@@ -64,10 +65,10 @@ class CampusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SchoolSetup\Campus  $campus
+     * @param  \App\SchoolSetup\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Campus $campus)
+    public function update(Request $request, Year $year)
     {
         //
     }
@@ -75,10 +76,10 @@ class CampusController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SchoolSetup\Campus  $campus
+     * @param  \App\SchoolSetup\Year  $year
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Campus $campus)
+    public function destroy(Year $year)
     {
         //
     }

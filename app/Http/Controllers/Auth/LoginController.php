@@ -50,7 +50,18 @@ class LoginController extends Controller
 
 	public function authenticated(Request $request, $user)
 	{
+        $defualtCampus = DB::table('campus_user')
+            ->where([
+                'user_id' => $user->id,
+                'year_id' => $request->year_id,
+                'default' => 1
+            ])->select('campus_id')->first();
 
+        session([
+            'year_id'           => $request->year_id,
+            'campus_ids'        => $user->campuses()->pluck('id')->toArray(),
+            'default_campus'    => $defualtCampus ? $defualtCampus->campus_id : null
+        ]);
 	}
 
 

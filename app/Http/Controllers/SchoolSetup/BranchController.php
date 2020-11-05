@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SchoolSetup;
 
-use App\SchoolSetup\Year;
+use App\Http\Controllers\Controller;
+use App\SchoolSetup\Branch;
 use Illuminate\Http\Request;
 
-class YearController extends Controller
+class BranchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class YearController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SchoolSetup\Year  $year
+     * @param  \App\SchoolSetup\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function show(Year $year)
+    public function show(Branch $branch)
     {
         //
     }
@@ -52,10 +53,10 @@ class YearController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SchoolSetup\Year  $year
+     * @param  \App\SchoolSetup\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Year $year)
+    public function edit(Branch $branch)
     {
         //
     }
@@ -64,10 +65,10 @@ class YearController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SchoolSetup\Year  $year
+     * @param  \App\SchoolSetup\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Year $year)
+    public function update(Request $request, Branch $branch)
     {
         //
     }
@@ -75,10 +76,10 @@ class YearController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SchoolSetup\Year  $year
+     * @param  \App\SchoolSetup\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Year $year)
+    public function destroy(Branch $branch)
     {
         //
     }

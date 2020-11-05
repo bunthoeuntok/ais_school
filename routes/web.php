@@ -46,3 +46,14 @@ Route::group([
 	Route::resource('pages', 'PageController');
 });
 
+Route::group([
+	'prefix'		=> 'school-setup',
+    'as'			=> 'school-setup.',
+    'middleware'	=> ['auth'],
+    'namespace'		=> 'SchoolSetup'
+], function () {
+	Route::resource('branches', 'BranchController');
+	Route::resource('campuses', 'BranchController');
+	Route::resource('years', 'YearController');
+});
+

@@ -13,4 +13,10 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function year($yearId)
+    {
+    	session(['year_id' => $yearId]);
+    	return redirect()->back();
+    }
+
 }

@@ -31,6 +31,7 @@ Route::group([
     'namespace'		=> 'Setting'
 ], function () {
 	Route::get('locale/{locale}', 'SettingController@locale')->name('locale');
+	Route::get('year/{yearId}', 'SettingController@year')->name('year');
     Route::resource('languages', 'LanguageController');
 });
 

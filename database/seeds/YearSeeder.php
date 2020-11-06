@@ -15,10 +15,16 @@ class YearSeeder extends Seeder
     public function run()
     {
         $year = Year::create([
-	        	'name' => '2022 - 2021',
-	        	'start_date' => '2020-01-01',
-	        	'end_date' => '2021-01-01',
-	        ]);
+	    	'name' => '2020 - 2021',
+	    	'start_date' => '2020-01-01',
+	    	'end_date' => '2021-01-01',
+	    ]);
+
+        $year = Year::create([
+	    	'name' => '2021 - 2022',
+	    	'start_date' => '2020-01-01',
+	    	'end_date' => '2021-01-01',
+	    ]);
 
 		$campuses = Campus::all();
 		$user = User::find(1);

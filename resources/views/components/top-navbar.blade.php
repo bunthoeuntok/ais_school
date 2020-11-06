@@ -73,7 +73,7 @@
                 </a>
                 <div class="dropdown-menu">
                     @foreach (GlobalHelper::years() as $year)
-                        <a href="{{ route( 'setting.locale', ['locale' => $year->code]) }}" class="dropdown-item {{ $year->id }}">
+                        <a href="{{ route( 'setting.year', ['yearId' => $year->id]) }}" class="dropdown-item {{ $year->id }}">
                             {{ $year->name }}
                         </a>
                     @endforeach

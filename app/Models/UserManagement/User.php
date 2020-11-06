@@ -2,6 +2,7 @@
 
 namespace App\Models\UserManagement;
 
+use App\SchoolSetup\Campus;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -48,4 +49,9 @@ class User extends Authenticatable
 	{
 		return $this->roles()->where('slug', 'administrator')->first();
 	}
+
+    public function campuses()
+    {
+        return $this->belongsToMany(Campus::class)->withTimestamps();
+    }
 }

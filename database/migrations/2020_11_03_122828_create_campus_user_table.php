@@ -18,6 +18,7 @@ class CreateCampusUserTable extends Migration
             $table->unsignedBigInteger('campus_id');
             $table->unsignedBigInteger('year_id');
             $table->boolean('default')->default(false);
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');

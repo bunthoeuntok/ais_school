@@ -1,5 +1,6 @@
 <?php
 
+use App\SchoolSetup\Branch;
 use Illuminate\Database\Seeder;
 
 class BranchSeeder extends Seeder
@@ -11,6 +12,8 @@ class BranchSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Branch::create([
+        	'name' => 'Branch 1'
+        ]);
     }
 }

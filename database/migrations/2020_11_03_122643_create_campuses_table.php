@@ -17,7 +17,7 @@ class CreateCampusesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('branch_id');
             $table->text('name');
-            $table->text('name_kh');
+            $table->text('name_kh')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('logo')->nullable();

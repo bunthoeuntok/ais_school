@@ -15,8 +15,8 @@ class CreateBranchesTable extends Migration
     {
         Schema::create('branches', function (Blueprint $table) {
             $table->id();
-            $table->string('app_key');
-            $table->string('api_key');
+            $table->string('app_key')->nullable();
+            $table->string('api_key')->nullable();
             $table->string('name');
             $table->string('logo')->nullable();
             $table->string('email')->nullable();

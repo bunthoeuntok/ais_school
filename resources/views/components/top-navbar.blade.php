@@ -67,6 +67,19 @@
 
         <span class="badge bg-success ml-md-3 mr-md-auto">Online</span>
         <ul class="navbar-nav">
+            <li class="nav-item dropdown year-switch dropdown-auto-width">
+                <a href="javascript:void(0)" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
+                    2020 -2021
+                </a>
+                <div class="dropdown-menu">
+                    @foreach (GlobalHelper::years() as $year)
+                        <a href="{{ route( 'setting.locale', ['locale' => $year->code]) }}" class="dropdown-item {{ $year->id }}">
+                            {{ $year->name }}
+                        </a>
+                    @endforeach
+                </div>
+            </li>
+
             <li class="nav-item dropdown language-switch dropdown-auto-width">
                 <a href="javascript:void(0)" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
                     <img src="{{ asset('assets/images/lang/100/en.png') }}" class="img-flag mr-2" alt="">
@@ -81,14 +94,7 @@
                     @endforeach
                 </div>
             </li>
-            <li class="nav-item dropdown dropdown-auto-width">
-{{--                @foreach(Gb::years() as $year)--}}
-{{--                    <a class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">--}}
-{{--                        2020 - 2021--}}
-{{--                    </a>--}}
-{{--                @endforeach--}}
 
-            </li>
             <li class="nav-item dropdown">
                 <a href="#" class="navbar-nav-link dropdown-toggle caret-0" data-toggle="dropdown">
                     <i class="icon-bubbles4"></i>

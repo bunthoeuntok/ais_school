@@ -5,6 +5,7 @@ namespace App\Helpers;
 
 use App\Models\Setting\Language;
 use App\Models\UserManagement\Module;
+use App\SchoolSetup\Year;
 
 class GlobalHelper
 {
@@ -26,5 +27,10 @@ class GlobalHelper
 	public static function languages()
 	{
 		return Language::all();
+	}
+
+	public static function years()
+	{
+		return Year::all();
 	}
 }

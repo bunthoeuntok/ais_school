@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\SchoolSetup;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\SchoolSetup\CampusRepository;
 use App\SchoolSetup\Campus;
 use Illuminate\Http\Request;
 
 class CampusController extends Controller
 {
+    protected $campusRepository;
+
+    public function __construct(CampusRepository $campusRepository)
+    {
+         $this->campusRepository = $campusRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,9 @@ class CampusController extends Controller
      */
     public function index()
     {
-        //
+        return view('school-setup.campuses.index', [
+            'campuses' => $this->campusRepository->all()
+        ]);
     }
 
     /**

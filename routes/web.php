@@ -54,7 +54,7 @@ Route::group([
     'namespace'		=> 'SchoolSetup'
 ], function () {
 	Route::resource('branches', 'BranchController');
-	Route::resource('campuses', 'BranchController');
+	Route::resource('campuses', 'CampusController');
 	Route::resource('years', 'YearController');
 });
 

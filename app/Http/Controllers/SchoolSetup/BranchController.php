@@ -3,11 +3,18 @@
 namespace App\Http\Controllers\SchoolSetup;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\SchoolSetup\BranchRepository;
 use App\SchoolSetup\Branch;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
+    protected $branchRepository;
+
+    public function __construct(BranchRepository $branchRepository)
+    {
+        $this->branchRepository = $branchRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,9 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        return view('school-setup.branches.index', [
+            'branches' => $this->branchRepository->all()
+        ]);
     }
 
     /**
